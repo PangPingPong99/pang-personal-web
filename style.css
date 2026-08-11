@@ -1,0 +1,1815 @@
+/* ==========================================================================
+   1. GLOBAL VARIABLES & RESET
+   ========================================================================== */
+:root {
+    /* Color Palette (Dark Theme Default) */
+    --bg-color: #0b0f19;
+    --card-bg: #141c2e;
+    --card-hover: #1e293b;
+    --text-color: #f1f5f9;
+    --text-muted: #94a3b8;
+    --accent-color: #4ade80; /* Bright Mint Green */
+    --accent-glow: rgba(74, 222, 128, 0.35);
+    --border-color: rgba(74, 222, 128, 0.2);
+    --nav-bg: rgba(11, 15, 25, 0.85);
+    --icon-color: #ffffff;
+    
+    /* Font & Layout */
+    --font-family: 'Poppins', sans-serif;
+    --transition-fast: 0.3s ease;
+    --transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --border-radius: 16px;
+}
+
+/* Light Theme Overrides */
+[data-theme="light"] {
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --card-hover: #f1f5f9;
+    --text-color: #0f172a;
+    --text-muted: #64748b;
+    --accent-color: #16a34a; /* Slightly deeper green for contrast on light */
+    --accent-glow: rgba(22, 163, 74, 0.2);
+    --border-color: rgba(22, 163, 74, 0.2);
+    --nav-bg: rgba(248, 250, 252, 0.85);
+    --icon-color: #0f172a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color var(--transition-smooth), color var(--transition-smooth);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 90px 0 40px;
+}
+
+h1, h2, h3, h4 {
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+span.glow-text, span.accent-text, .section-title span {
+    color: var(--accent-color);
+    text-shadow: 0 0 12px var(--accent-glow);
+}
+
+.section-title {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 45px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+    box-shadow: 0 0 8px var(--accent-color);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition-fast);
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: #000;
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px var(--accent-glow);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-secondary:hover {
+    background: var(--accent-color);
+    color: #000;
+}
+
+/* ==========================================================================
+   2. NAVBAR
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition-smooth);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.nav-logo span {
+    color: var(--accent-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 24px;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition-fast);
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.theme-toggle-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--accent-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: var(--transition-fast);
+}
+
+.theme-toggle-btn:hover {
+    background-color: var(--border-color);
+    transform: rotate(15deg);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    border-radius: 3px;
+    transition: var(--transition-fast);
+}
+
+/* ==========================================================================
+   3. HERO SECTION & HEXAGON PROFILE
+   ========================================================================== */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    width: 100%;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.headline {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.sub-headline {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.hero-bio {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 15px;
+}
+
+/* Hexagon Border Setup */
+.hero-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hexagon-border {
+    width: 310px;
+    height: 340px;
+    background: var(--accent-color);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(0 0 20px var(--accent-glow));
+    transition: var(--transition-fast);
+}
+
+.hexagon-border:hover {
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 30px var(--accent-color));
+}
+
+.hexagon-inner {
+    width: 300px;
+    height: 330px;
+    background-color: var(--bg-color);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    overflow: hidden;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ==========================================================================
+   4. CARDS & GRID LAYOUTS
+   ========================================================================== */
+.cards-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.columns-3 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.columns-4 {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    transition: var(--transition-fast);
+}
+
+.card:hover {
+    background: var(--card-hover);
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card-placeholder {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* Biodata Layout */
+.biodata-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.biodata-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    transition: var(--transition-fast);
+}
+
+.biodata-card:hover {
+    border-color: var(--accent-color);
+}
+
+.bio-icon {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    margin-bottom: 5px;
+}
+
+.bio-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.bio-value {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Education Card */
+.education-card .card-icon {
+    font-size: 2.2rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+/* Hobi Cards */
+.hobi-card {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.hobi-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.hobi-card h3 {
+    font-size: 1.1rem;
+}
+
+/* Tools Section */
+.tool-card .tool-logo {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+/* Memory Lane (Gallery) */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 12px;
+    text-align: center;
+    transition: var(--transition-fast);
+}
+
+.gallery-item:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+}
+
+.img-frame {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+    /* Posisi bawaan semua foto (25% = foto agak turun sedikit agar bagian atas/wajah lebih kelihatan) */
+    object-position: center 50%; 
+    
+    transition: transform 0.3s ease;
+}
+
+
+/* Efek Zoom halus pada foto saat kartu di-hover */
+.gallery-item:hover .img-frame img {
+    transform: scale(1.06);
+}
+
+.gallery-caption {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+/* ==========================================================================
+   KELAS BANTUAN UNTUK PENGATURAN POSISI FOTO SPESIFIK
+   ========================================================================== */
+
+/* Foto fokus paling atas (kepala/langit) */
+.img-frame img.pos-top {
+    object-position: center top !important;
+}
+
+/* Foto makin turun lagi (jika 25% masih kurang turun) */
+.img-frame img.pos-down {
+    object-position: center 15% !important;
+}
+
+/* Foto pas di tengah-tengah */
+.img-frame img.pos-center {
+    object-position: center center !important;
+}
+
+/* Foto fokus bagian bawah */
+.img-frame img.pos-bottom {
+    object-position: center bottom !important;
+}
+/* Khusus Foto Ke-2 agar turun lebih bawah lagi */
+.img-frame img.foto-2-turun {
+    object-position: center 70% !important; 
+}
+/* Khusus Foto Ke-2 agar turun lebih bawah lagi */
+.img-frame img.foto-4-turun {
+    object-position: center 65% !important; 
+}
+/* Pop Culture Corner */
+.pop-group {
+    margin-bottom: 45px;
+}
+
+.sub-section-title {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent-color);
+}
+
+.pop-card {
+    padding: 0; /* Menghilangkan padding card default agar gambar full-bleed */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.pop-card.text-only {
+    padding: 10px 0; /* Padding khusus untuk kartu lagu yang tanpa gambar */
+}
+
+.pop-img-wrapper {
+    width: 100%;
+    height: 260px; /* Tinggi cover poster */
+    overflow: hidden;
+    position: relative;
+}
+
+.pop-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-fast);
+}
+/* ==========================================================================
+   STYLE TOMBOL FILTER DIGITAL ESCAPE
+   ========================================================================== */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+.filter-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-btn:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.filter-btn.active {
+    background: var(--accent-color);
+    color: #000;
+    border-color: var(--accent-color);
+    font-weight: 600;
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* Animasi menyembunyikan kategori yang tidak dipilih */
+.pop-group {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.pop-group.hide {
+    display: none !important;
+}
+/* Efek Zoom-In saat Card di-hover */
+.pop-card:hover .pop-img {
+    transform: scale(1.08);
+}
+
+.pop-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.pop-card h4 {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.pop-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.artist-tag {
+    display: inline-block;
+    font-size: 0.78rem;
+    color: var(--accent-color);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+/* Layout judul + tombol play di dalam card */
+.card-header-play {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.card-header-play h4 {
+    margin: 0;
+}
+
+/* Style untuk Tombol Play/Pause */
+.play-btn {
+    background-color: #ff4757; /* Ubah warna sesuai tema kamu */
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.play-btn:hover {
+    background-color: #e84118;
+    transform: scale(1.1);
+}
+
+.play-btn i {
+    font-size: 14px;
+}
+
+/* Gaming Zone Styling Update */
+.game-title {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Ukuran Logo di Samping Judul Game */
+.game-title-logo {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 6px var(--accent-glow));
+}
+
+/* Khusus Icon Block Minecraft di dalam card */
+.minecraft-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.minecraft-block-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+/* ==========================================================================
+   STYLE GAMING ZONE (HERO & COMMANDER CARDS)
+   ========================================================================== */
+
+.game-group {
+    margin-bottom: 40px;
+}
+
+.game-sub {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+/* Style Kartu Hero */
+.hero-card {
+    text-align: center;
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Avatar Lingkaran dengan Garis Cahaya Neon */
+.hero-avatar {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin-bottom: 12px;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-glow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Zoom Avatar saat Kartu di-hover */
+.hero-card:hover .hero-avatar {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px var(--accent-color);
+}
+
+.hero-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+}
+
+/* Badge Tag 'MAIN' di Pojok Avatar */
+.hero-tag-badge {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    background: #ff4757;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    box-shadow: 0 0 8px rgba(255, 71, 87, 0.6);
+}
+
+/* Badge Role (Label Neon Warna-warni) */
+.hero-role-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+}
+
+/* Warna-warna Role */
+.hero-role-badge.assassin {
+    background: rgba(168, 85, 247, 0.15);
+    color: #c084fc;
+    border: 1px solid rgba(168, 85, 247, 0.4);
+}
+
+.hero-role-badge.fighter {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.hero-role-badge.mage {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.4);
+}
+
+.hero-role-badge.commander {
+    background: rgba(234, 179, 8, 0.15);
+    color: #facc15;
+    border: 1px solid rgba(234, 179, 8, 0.4);
+}
+
+.hero-role-badge.minecraft {
+    background: rgba(74, 222, 128, 0.15);
+    color: var(--accent-color);
+    border: 1px solid var(--border-color);
+    margin-bottom: 8px;
+}
+
+/* Style Khusus Kartu Minecraft */
+.minecraft-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+}
+
+.minecraft-info h4 {
+    margin-bottom: 4px;
+}
+
+.minecraft-info p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Badge Khusus Gold Lane (Warna Emas / Gold Glow) */
+.hero-role-badge.goldlane {
+    background: rgba(245, 158, 11, 0.18);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.5);
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+    
+    /* ==========================================================================
+   MINECRAFT 3D SKIN VIEWER BOX
+   ========================================================================== */
+.minecraft-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 25px;
+}
+
+/* Bingkai Kotak 3D Minecraft */
+.minecraft-3d-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.35);
+    border: 2px solid var(--accent-color);
+    border-radius: 16px;
+    padding: 10px;
+    box-shadow: 0 0 20px var(--accent-glow);
+    flex-shrink: 0;
+}
+
+/* Ukuran Canvas 3D */
+#minecraft-skin-canvas {
+    width: 200px;
+    height: 250px;
+    cursor: grab; /* Kursor bentuk tangan saat diarahkan */
+}
+
+#minecraft-skin-canvas:active {
+    cursor: grabbing; /* Kursor memegang saat diputar */
+}
+
+.skin-hint {
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+@media (max-width: 576px) {
+    .minecraft-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+}
+
+/* ==========================================================================
+   STYLE TOMBOL FILTER GAMING ZONE
+   ========================================================================== */
+.game-filter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+.game-filter-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.game-filter-btn:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.game-filter-btn.active {
+    background: var(--accent-color);
+    color: #000;
+    border-color: var(--accent-color);
+    font-weight: 600;
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.btn-game-logo {
+    height: 18px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Sembunyikan game yang tidak dipilih */
+.game-group.hide-game {
+    display: none !important;
+}
+/* ==========================================================================
+   5. FOOTER
+   ========================================================================== */
+.footer {
+    background: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 50px 0 20px;
+    margin-top: 50px;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    text-align: center;
+}
+
+.footer-logo h3 {
+    font-size: 1.6rem;
+}
+
+.footer-logo span {
+    color: var(--accent-color);
+}
+
+.footer-logo p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--icon-color);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.social-icon:hover {
+    background-color: var(--accent-color);
+    color: #000;
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    width: 100%;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   6. SCROLL REVEAL ANIMATIONS (Intersection Observer)
+   ========================================================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-slide-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active,
+.reveal-left.active,
+.reveal-scale.active,
+.reveal-slide-up.active {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+}
+
+/* ==========================================================================
+   7. RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .hero-bio {
+        margin: 0 auto 30px;
+    }
+
+    .hero-cta {
+        justify-content: center;
+    }
+
+    .headline {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--bg-color);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        transition: var(--transition-fast);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hexagon-border {
+        width: 240px;
+        height: 270px;
+    }
+
+    .hexagon-inner {
+        width: 230px;
+        height: 260px;
+    }
+
+    .minecraft-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ==========================================================================
+   STYLE LIGHTBOX MODAL (ZOOM FOTO)
+   ========================================================================== */
+
+/* Kursor pointer di galeri agar pengunjung tahu fotonya bisa diklik */
+.gallery-item .img-frame {
+    cursor: pointer;
+}
+
+/* Modal Latar Belakang */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+}
+
+/* Saat Modal Aktif */
+.lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+/* Gambar Zoom di Dalam Modal */
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+    object-fit: contain;
+    animation: zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Teks Keterangan Foto */
+.lightbox-caption {
+    margin-top: 15px;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Tombol Silang (Close) */
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.lightbox-close:hover {
+    color: var(--accent-color);
+    transform: scale(1.2);
+}
+
+/* Animasi Zoom In saat foto dibuka */
+@keyframes zoomIn {
+    from { 
+        transform: scale(0.7); 
+        opacity: 0; 
+    }
+    to { 
+        transform: scale(1); 
+        opacity: 1; 
+    }
+}
+
+/* ==========================================================================
+   AUTO TYPING CURSOR EFFECT
+   ========================================================================== */
+.typing-cursor {
+    color: var(--accent-color);
+    font-weight: 700;
+    margin-left: 3px;
+    animation: blink 0.7s infinite;
+}
+
+/* Animasi Kedip Kursor Tik */
+@keyframes blink {
+    0%, 100% { 
+        opacity: 1; 
+    }
+    50% { 
+        opacity: 0; 
+    }
+}
+
+/* ==========================================================================
+   GAME HERO / COMMANDER INFO MODAL (9:16 & STATS)
+   ========================================================================== */
+
+.hero-card {
+    cursor: pointer; /* Indikator bahwa kartu bisa diklik */
+}
+
+.game-modal {
+    display: none;
+    position: fixed;
+    z-index: 2500;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+}
+
+.game-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.game-modal-content {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    max-width: 550px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 0 35px var(--accent-glow);
+    animation: popupZoom 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.game-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: var(--text-color);
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.game-modal-close:hover {
+    color: var(--accent-color);
+    transform: scale(1.2);
+}
+
+.game-modal-body {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+/* Poster Rasio 9:16 */
+.game-modal-poster {
+    width: 180px;
+    height: 320px; /* Rasio 9:16 */
+    flex-shrink: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.game-modal-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.game-modal-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.game-modal-details h3 {
+    font-size: 1.6rem;
+    margin: 0;
+}
+
+/* Grid Box Stats (Match & WR) */
+.gm-stats-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.gm-stat-card {
+    background: var(--card-hover);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.gm-stat-icon {
+    font-size: 1.4rem;
+    color: var(--accent-color);
+}
+
+.gm-stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+}
+
+.gm-stat-info h4 {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+@keyframes popupZoom {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive di Layar HP */
+@media (max-width: 576px) {
+    .game-modal-body {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .game-modal-details {
+        align-items: center;
+    }
+    
+    .game-modal-poster {
+        width: 150px;
+        height: 266px;
+    }
+}
+
+/* ==========================================================================
+   GAMING ZONE COMPLETE STYLING
+   ========================================================================== */
+
+/* 1. Tombol Filter Gaming Zone */
+.game-filter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+.game-filter-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.game-filter-btn:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.game-filter-btn.active {
+    background: var(--accent-color);
+    color: #000;
+    border-color: var(--accent-color);
+    font-weight: 600;
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.btn-game-logo {
+    height: 18px;
+    width: auto;
+    object-fit: contain;
+}
+
+.game-group.hide-game {
+    display: none !important;
+}
+
+/* 2. Style Kartu Hero MLBB & Commander Magic Chess */
+.game-group {
+    margin-bottom: 40px;
+}
+
+.game-sub {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.hero-card {
+    text-align: center;
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.hero-avatar {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin-bottom: 12px;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-glow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.hero-card:hover .hero-avatar {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px var(--accent-color);
+}
+
+.hero-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+}
+
+.hero-tag-badge {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    background: #ff4757;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    box-shadow: 0 0 8px rgba(255, 71, 87, 0.6);
+}
+
+.hero-role-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+}
+
+.hero-role-badge.goldlane {
+    background: rgba(245, 158, 11, 0.18);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.5);
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+}
+
+.hero-role-badge.commander {
+    background: rgba(234, 179, 8, 0.15);
+    color: #facc15;
+    border: 1px solid rgba(234, 179, 8, 0.4);
+}
+
+.hero-role-badge.minecraft {
+    background: rgba(74, 222, 128, 0.15);
+    color: var(--accent-color);
+    border: 1px solid var(--border-color);
+    margin-bottom: 8px;
+}
+
+/* 3. Style Frame 3D Minecraft */
+.minecraft-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 25px;
+}
+
+.minecraft-3d-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.35);
+    border: 2px solid var(--accent-color);
+    border-radius: 16px;
+    padding: 10px;
+    box-shadow: 0 0 20px var(--accent-glow);
+    flex-shrink: 0;
+}
+
+#minecraft-skin-canvas {
+    width: 200px;
+    height: 250px;
+    cursor: grab;
+}
+
+#minecraft-skin-canvas:active {
+    cursor: grabbing;
+}
+
+.skin-hint {
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   EFEK PARTICLES & 3D TILT CARDS
+   ========================================================================== */
+
+/* 1. Pengaturan Layer Partikel di Hero Section */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   PARTIKEL UNTUK SELURUH WEBSITE (FULLSITE BACKGROUND)
+   ========================================================================== */
+#particles-js {
+    position: fixed; /* Tetap berada di latar belakang saat di-scroll */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Di belakang SELURUH elemen/seksi website */
+    pointer-events: none; /* Supaya tidak menghalangi klik pada tombol/kartu */
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2; /* Teks & Foto Hero tetap di depan agar terbaca/bisa diklik */
+}
+
+/* 2. Efek 3D Menonjol pada Kartu */
+.card {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+/* Elemen di dalam kartu sedikit menonjol saat miring 3D */
+.card h3, 
+.card h4, 
+.card p, 
+.card .card-icon, 
+.card .tool-logo, 
+.card .hero-avatar, 
+.card .pop-img-wrapper,
+.card .play-btn {
+    transform: translateZ(20px);
+    transition: transform 0.3s ease;
+}
+
+/* ==========================================================================
+   SEKSI DESAIN GRAFIS (STRICT 4:5 PORTRAIT RATIO)
+   ========================================================================== */
+
+/* Grid Layout: 3 Kolom di Laptop */
+.desain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.desain-card {
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    transition: var(--transition-fast);
+}
+
+.desain-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* WADAH FOTO: Mengunci Rasio Tepat 4:5 */
+.desain-img-wrapper {
+    width: 100%;
+    aspect-ratio: 4 / 5; /* Mengunci Rasio 4:5 */
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+/* Foto Mengisi Kotak 4:5 Tanpa Gepeng/Melar */
+.desain-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Gambar terpotong rapi tanpa terdistorsi */
+    transition: transform 0.4s ease;
+}
+
+.desain-card:hover .desain-img-wrapper img {
+    transform: scale(1.05); /* Efek zoom halus saat kartu di-hover */
+}
+
+.desain-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    color: var(--text-color);
+}
+
+.desain-tag {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+/* Modal Lightbox Tampilan Penuh */
+.desain-lightbox {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+}
+
+.desain-lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+.desain-lightbox-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90%;
+    max-height: 90vh;
+}
+
+/* Foto di Dalam Lightbox Tetap Mempertahankan Rasio 4:5 */
+#desain-lightbox-img {
+    max-height: 80vh;
+    aspect-ratio: 4 / 5;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 30px var(--accent-glow);
+    border: 2px solid var(--accent-color);
+    animation: popupZoom 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#desain-lightbox-caption {
+    margin-top: 15px;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.desain-lightbox-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.desain-lightbox-close:hover {
+    color: var(--accent-color);
+    transform: scale(1.2);
+}
+
+/* Responsive: 2 Kolom di Tablet, 1 Kolom di HP */
+@media (max-width: 992px) {
+    .desain-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .desain-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   EFEK PROGRESS BAR NEON PADA HOBI SECTION
+   ========================================================================== */
+.hobi-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.hobi-progress-wrapper {
+    width: 100%;
+    margin-top: 18px;
+}
+
+.hobi-progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.hobi-percent {
+    color: var(--accent-color);
+    font-weight: 700;
+    text-shadow: 0 0 8px var(--accent-glow);
+}
+
+.hobi-progress-bg {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.hobi-progress-fill {
+    height: 100%;
+    background: var(--accent-color);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--accent-glow);
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* ==========================================================================
+   STYLE LOGO PNG PENDIDIKAN
+   ========================================================================== */
+.edu-logo-wrapper {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edu-logo-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px var(--accent-glow));
+    transition: transform 0.3s ease;
+}
+
+/* Efek zoom halus pada logo saat kartu di-hover */
+.education-card:hover .edu-logo-img {
+    transform: scale(1.12);
+}
+
+/* ==========================================================================
+   EFEK 3D TILT MENONJOL UNTUK SELURUH KARTU WEBSITE
+   ========================================================================== */
+.card, 
+.biodata-card, 
+.gallery-item {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+/* Elemen teks, icon, dan gambar di dalam kartu sedikit menonjol saat miring 3D */
+.card h3, .card h4, .card p, 
+.card .card-icon, .card .tool-logo, .card .hobi-icon,
+.biodata-card .bio-icon, .gallery-item .img-frame,
+.card .hero-avatar, .card .pop-img-wrapper, .card .play-btn {
+    transform: translateZ(20px);
+    transition: transform 0.3s ease;
+}

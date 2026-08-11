@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PangPingPong | Personal Web</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="particles-js"></div>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">Pang<span>PingPong</span></a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#biodata">Biodata</a></li>
+                <li><a href="#pendidikan">Pendidikan</a></li>
+                <li><a href="#hobi">Hobi</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#desain">Result Design</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#pop-culture">Digital Escape</a></li>
+                <li><a href="#gaming">Gaming</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main>
+        <!-- 1. Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-text reveal reveal-left">
+                    <h1 class="headline">HI, I'M <span class="glow-text">PangPingPong!</span></h1>
+<h2 class="sub-headline"><span class="typing-text accent-text"></span><span class="typing-cursor">|</span></h2>
+                    <p class="hero-bio">
+                        Halo! Aku Mahasiswa Baru di ITH (Institut Teknologi BJ Habibie) yang punya ketertarikan besar buat ngulik dunia coding dan teknologi. Kalau lagi nggak pusing liatin kode, biasanya aku ngabisin waktu buat push rank di game, maraton anime favorit, atau chill nonton film. Always eager to learn new things!
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#biodata" class="btn btn-primary">Kenal Lebih Dekat</a>
+                        <a href="#gaming" class="btn btn-secondary">Gaming Corner</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper reveal reveal-scale">
+                    <div class="hexagon-border">
+                        <div class="hexagon-inner">
+                            <img src="https://i.postimg.cc/T2ZfwcsG/IMG-20260810-232306.jpg" alt="PangPingPong Profile" class="profile-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Biodata Section -->
+        <section id="biodata" class="biodata-section">
+            <div class="container">
+                <h2 class="section-title reveal">Biodata <span>Diri</span></h2>
+                <div class="biodata-grid reveal reveal-scale">
+                    <div class="biodata-card">
+                        <i class="fa-solid fa-id-card bio-icon"></i>
+                        <span class="bio-label">Nama Lengkap</span>
+                        <p class="bio-value">Muhammad Irfan Syarifuddin</p>
+                    </div>
+                    <div class="biodata-card">
+                        <i class="fas fa-calendar-alt bio-icon"></i>
+                        <span class="bio-label">Umur</span>
+                        <p class="bio-value">18</p>
+                    </div>
+                    <div class="biodata-card">
+                        <i class="fas fa-graduation-cap bio-icon"></i>
+                        <span class="bio-label">Asal Sekolah</span>
+                        <p class="bio-value">MAN Pinrang</p>
+                    </div>
+                    <div class="biodata-card">
+                        <i class="fas fa-map-marker-alt bio-icon"></i>
+                        <span class="bio-label">Alamat</span>
+                        <p class="bio-value">Pinrang</p>
+                    </div>
+                    <div class="biodata-card">
+                        <i class="fas fa-user-graduate bio-icon"></i>
+                        <span class="bio-label">Status</span>
+                        <p class="bio-value">Yang YTTA Aja</p>
+                    </div>
+                    <div class="biodata-card">
+                        <i class="fas fa-envelope bio-icon"></i>
+                        <span class="bio-label">Email</span>
+                        <p class="bio-value">irpangwell@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- 3. Pendidikan Section -->
+<section id="pendidikan" class="pendidikan-section">
+    <div class="container">
+        <h2 class="section-title reveal">Riwayat <span>Pendidikan</span></h2>
+        <div class="cards-grid columns-3">
+
+            <!-- SD -->
+            <div class="card education-card reveal reveal-slide-up" data-tilt>
+                <div class="card-icon edu-logo-wrapper">
+                    <!-- Ganti src dengan link PNG logo SD kamu -->
+                    <img src="https://i.postimg.cc/Ls85kGWM/png-transparent-elementary-school-primary-education-high-school-school-class-logo-high-school-remove.png" alt="Logo SD" class="edu-logo-img">
+                </div>
+                <h3>SDN 6 Pinrang (2014 - 2020)</h3>
+                <p class="card-placeholder">Dulu dikenal sebagai SDN 6 Pinrang, sekolah ini sekarang bertransformasi menjadi UPT SD Negeri Inpres Bertingkat Pinrang yang berlokasi strategis di Jl. Bau Massepe. Selain berfokus pada pendidikan akademik dasar, sekolah ini juga aktif membentuk karakter siswanya agar memiliki kepedulian sosial yang tinggi lewat berbagai kegiatan kemasyarakatan.</p>
+            </div>
+
+            <!-- MTsN -->
+            <div class="card education-card reveal reveal-slide-up" style="animation-delay: 0.2s;" data-tilt>
+                <div class="card-icon edu-logo-wrapper">
+                    <!-- Ganti src dengan link PNG logo MTsN kamu -->
+                    <img src="https://i.postimg.cc/rpHV1sWR/images-removebg-preview-(1).png" alt="Logo MTsN" class="edu-logo-img">
+                </div>
+                <h3>MTsN Pinrang (2020 - 2023)</h3>
+                <p class="card-placeholder">Sekolah Islam berstatus negeri setingkat SMP di Pinrang yang berfokus mencetak siswa yang cerdas secara akademik sekaligus memiliki karakter kedisiplinan dan keagamaan yang kuat.</p>
+            </div>
+
+            <!-- MAN -->
+            <div class="card education-card reveal reveal-slide-up" style="animation-delay: 0.4s;" data-tilt>
+                <div class="card-icon edu-logo-wrapper">
+                    <!-- Ganti src dengan link PNG logo MAN kamu -->
+                    <img src="https://www.manpinrang.sch.id/images/DesainWeb2-01.png" alt="Logo MAN" class="edu-logo-img">
+                </div>
+                <h3>MAN Pinrang (2023 - 2026)</h3>
+                <p class="card-placeholder">Sekolah Islam berstatus negeri setingkat SMA di Pinrang yang bertujuan menghasilkan lulusan unggul dalam ilmu pengetahuan umum, serta dibekali dengan praktik agama Islam yang mendalam.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- 4. Minat & Hobi Section -->
+<section id="hobi" class="hobi-section">
+    <div class="container">
+        <h2 class="section-title reveal">Minat & <span>Hobi</span></h2>
+        <div class="cards-grid columns-3">
+
+            <!-- Hobi 1 -->
+            <div class="card hobi-card reveal reveal-scale" data-tilt>
+                <i class="fas fa-book-open hobi-icon"></i>
+                <h3>Baca Manga / Komik</h3>
+                <div class="hobi-progress-wrapper">
+                    <div class="hobi-progress-info">
+                        <span>Interest</span>
+                        <span class="hobi-percent">85%</span>
+                    </div>
+                    <div class="hobi-progress-bg">
+                        <div class="hobi-progress-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hobi 2 -->
+            <div class="card hobi-card reveal reveal-scale" data-tilt>
+                <i class="fas fa-film hobi-icon"></i>
+                <h3>Menonton Film & Anime</h3>
+                <div class="hobi-progress-wrapper">
+                    <div class="hobi-progress-info">
+                        <span>Interest</span>
+                        <span class="hobi-percent">90%</span>
+                    </div>
+                    <div class="hobi-progress-bg">
+                        <div class="hobi-progress-fill" style="width: 90%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hobi 3 -->
+            <div class="card hobi-card reveal reveal-scale" data-tilt>
+                <i class="fas fa-compass hobi-icon"></i>
+                <h3>Jalan - Jalan</h3>
+                <div class="hobi-progress-wrapper">
+                    <div class="hobi-progress-info">
+                        <span>Interest</span>
+                        <span class="hobi-percent">75%</span>
+                    </div>
+                    <div class="hobi-progress-bg">
+                        <div class="hobi-progress-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hobi 4 -->
+            <div class="card hobi-card reveal reveal-scale" data-tilt>
+                <i class="fas fa-code hobi-icon"></i>
+                <h3>Coding</h3>
+                <div class="hobi-progress-wrapper">
+                    <div class="hobi-progress-info">
+                        <span>Interest</span>
+                        <span class="hobi-percent">80%</span>
+                    </div>
+                    <div class="hobi-progress-bg">
+                        <div class="hobi-progress-fill" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hobi 5 -->
+            <div class="card hobi-card reveal reveal-scale" data-tilt>
+                <i class="fas fa-gamepad hobi-icon"></i>
+                <h3>Bermain Game</h3>
+                <div class="hobi-progress-wrapper">
+                    <div class="hobi-progress-info">
+                        <span>Interest</span>
+                        <span class="hobi-percent">95%</span>
+                    </div>
+                    <div class="hobi-progress-bg">
+                        <div class="hobi-progress-fill" style="width: 95%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hobi 6 -->
+            <div class="card hobi-card reveal reveal-scale" data-tilt>
+                <i class="fas fa-palette hobi-icon"></i>
+                <h3>Buat Desain Grafis</h3>
+                <div class="hobi-progress-wrapper">
+                    <div class="hobi-progress-info">
+                        <span>Interest</span>
+                        <span class="hobi-percent">85%</span>
+                    </div>
+                    <div class="hobi-progress-bg">
+                        <div class="hobi-progress-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+        <!-- 5. My Tools Section -->
+        <section id="tools" class="tools-section">
+            <div class="container">
+                <h2 class="section-title reveal">My <span>Tools</span></h2>
+                <div class="cards-grid columns-4">
+                    <div class="card tool-card reveal reveal-slide-up">
+                        <div class="tool-logo"><i class="fas fa-code"></i></div>
+                        <h3>VSCode</h3>
+                        <p class="card-placeholder">Code editor andalan untuk ngoding project web dan eksperimen script.</p>
+                    </div>
+                    <div class="card tool-card reveal reveal-slide-up">
+                        <div class="tool-logo"><i class="fas fa-video"></i></div>
+                        <h3>CapCut</h3>
+                        <p class="card-placeholder">Software editing video simpel dan cepat untuk kebutuhan konten kreatif.</p>
+                    </div>
+                    <div class="card tool-card reveal reveal-slide-up">
+                        <div class="tool-logo"><i class="fas fa-paint-brush"></i></div>
+                        <h3>Canva</h3>
+                        <p class="card-placeholder">Platform desain praktis untuk membuat poster, presentasi, dan grafik sosmed.</p>
+                    </div>
+                    <div class="card tool-card reveal reveal-slide-up">
+                        <div class="tool-logo"><i class="fab fa-pinterest-p"></i></div>
+                        <h3>Pinterest</h3>
+                        <p class="card-placeholder">Sumber inspirasi tanpa batas untuk ide visual, UI design, dan estetika.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- Seksi Karya Desain Grafis -->
+<section id="desain" class="desain-section">
+    <div class="container">
+        <h2 class="section-title reveal">Karya <span>Desain Grafis</span></h2>
+        
+        <div class="desain-grid">
+
+            <!-- Karya Desain 1 -->
+            <div class="card desain-card reveal reveal-scale" data-tilt>
+                <div class="desain-img-wrapper">
+                    <!-- Ganti link src dengan foto hasil desain kamu -->
+                    <img src="https://i.postimg.cc/t4Xv5ztw/poster-price-list-yuuneko-id2(24-7-25).png" alt="Desain Poster 1">
+                </div>
+                <div class="desain-info">
+                    <h4>Price List MLBB Store</h4>
+                    <span class="desain-tag">Canva + Pinterest</span>
+                </div>
+            </div>
+
+            <!-- Karya Desain 2 -->
+            <div class="card desain-card reveal reveal-scale" data-tilt>
+                <div class="desain-img-wrapper">
+                    <img src="https://i.postimg.cc/PrbFY7ZY/1-poster-movie-ala-ala-(24-7-25).png" alt="Desain Banner 2">
+                </div>
+                <div class="desain-info">
+                    <h4>Cinematic Indie Movie Poster</h4>
+                    <span class="desain-tag">Canva + Pinterest</span>
+                </div>
+            </div>
+
+            <!-- Karya Desain 3 -->
+            <div class="card desain-card reveal reveal-scale" data-tilt>
+                <div class="desain-img-wrapper">
+                    <img src="https://i.postimg.cc/h4dYPvGW/IMG-20251013-WA0075(1).jpg" alt="Desain Creative 3">
+                </div>
+                <div class="desain-info">
+                    <h4>Superhero Character Poster</h4>
+                    <span class="desain-tag">Canva + Pinterest</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+        <!-- 6. Memory Lane (Gallery) Section -->
+        <section id="gallery" class="gallery-section">
+            <div class="container">
+                <h2 class="section-title reveal">Gallery</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item reveal reveal-scale">
+                        <div class="img-frame">
+                            <img src="https://files.catbox.moe/tw2y3e.jpg" alt="Kegiatan 1">
+                        </div>
+                        <p class="gallery-caption">Naik Gunung Buaya (Lome, Kec. Duampanua, Kab. Pinrang)</p>
+                    </div>
+                    <div class="gallery-item reveal reveal-scale">
+                        <div class="img-frame">
+                            <img src="https://files.catbox.moe/6wy1fr.jpg" class="foto-2-turun" alt="Kegiatan 2">
+                        </div>
+                        <p class="gallery-caption">Event Pawai 1 Muharram</p>
+                    </div>
+                    <div class="gallery-item reveal reveal-scale">
+                        <div class="img-frame">
+                            <img src="https://files.catbox.moe/m3csr7.jpg" alt="Kegiatan 3">
+                        </div>
+                        <p class="gallery-caption">After Final Porseni MLBB</p>
+                    </div>
+                    <div class="gallery-item reveal reveal-scale">
+                        <div class="img-frame">
+                            <img src="https://files.catbox.moe/glrhd8.jpg" class="foto-4-turun" alt="Kegiatan 4">
+                        </div>
+                        <p class="gallery-caption">Fotbar Sekelas</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- 7. Pop Culture Corner Section -->
+<section id="pop-culture" class="pop-culture-section">
+    <div class="container">
+        <h2 class="section-title reveal">Digital <span>Escape</span></h2>
+        
+        <!-- 🔘 TOMBOL FILTER KATEGORI -->
+        <div class="filter-container reveal reveal-slide-up">
+            <button class="filter-btn active" data-filter="all">Semua</button>
+            <button class="filter-btn" data-filter="anime"><i class="fas fa-tv"></i> Anime</button>
+            <button class="filter-btn" data-filter="manga"><i class="fas fa-book"></i> Manga</button>
+            <button class="filter-btn" data-filter="movies"><i class="fas fa-clapperboard"></i> Film</button>
+            <button class="filter-btn" data-filter="songs"><i class="fas fa-music"></i> Lagu</button>
+        </div>
+
+        <!-- Sub 1: Anime -->
+        <div class="pop-group reveal reveal-slide-up" data-category="anime">
+            <h3 class="sub-section-title"><i class="fas fa-tv"></i> Anime Favorit</h3>
+            <div class="cards-grid columns-4">
+                <div class="card pop-card">
+                    <div class="pop-img-wrapper">
+                        <img src="https://i.postimg.cc/Z5F2FPKw/39edea93-f80d-4c65-9040-981089d3916a.jpg" alt="Demon Slayer" class="pop-img">
+                    </div>
+                    <div class="pop-content">
+                        <h4>Demon Slayer</h4>
+                        <p>Pertarungan epik Tanjiro membasmi iblis dengan visual animasi memukau dari studio Ufotable.</p>
+                    </div>
+                </div>
+                <div class="card pop-card">
+                    <div class="pop-img-wrapper">
+                        <img src="https://i.postimg.cc/qqSj4qB3/5fc801db-509f-406e-8c56-ed334c7fb0eb.jpg" alt="The Quintessential Quintuplets" class="pop-img">
+                    </div>
+                    <div class="pop-content">
+                        <h4>The Quintessential Quintuplets</h4>
+                        <p>Kisah komedi romantis Fuutarou yang mengajari lima saudari kembar identik berkarakter unik.</p>
+                    </div>
+                </div>
+                <div class="card pop-card">
+                    <div class="pop-img-wrapper">
+                        <img src="https://i.postimg.cc/yYf7XzQr/Dr-stone.jpg" alt="Dr. Stone" class="pop-img">
+                    </div>
+                    <div class="pop-content">
+                        <h4>Dr. Stone</h4>
+                        <p>Petualangan cerdas Senku membangun kembali peradaban manusia menggunakan kekuatan sains murni.</p>
+                    </div>
+                </div>
+                <div class="card pop-card">
+                    <div class="pop-img-wrapper">
+                        <img src="https://i.postimg.cc/sX1LrtPb/1926dd21-6eab-4f7b-a30a-af2d1942a0a8.jpg" alt="Attack On Titan" class="pop-img">
+                    </div>
+                    <div class="pop-content">
+                        <h4>Attack On Titan</h4>
+                        <p>Mahakarya aksi dan kebebasan dengan plot twist jenius serta konflik politik yang mendalam.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sub 2: Manga -->
+        <div class="pop-group reveal reveal-slide-up" data-category="manga">
+            <h3 class="sub-section-title"><i class="fas fa-book"></i> Manga Favorit</h3>
+            <div class="cards-grid columns-3">
+                <div class="card pop-card">
+                    <div class="pop-img-wrapper">
+                        <img src="https://i.postimg.cc/Px3b491J/La-segunda-temporada-de-Tune-In-to-the-Midnight-Heart-(Mayonaka-Heart-Tune)-se-estrenara-upco.jpg" alt="Tune In to the Midnight Heart" class="pop-img">
+                    </div>
+                    <div class="pop-content">
+                        <h4>Tune In to the Midnight Heart</h4>
+                        <p>Kisah misteri romansa manis seputar pencarian identitas penyiar radio siaran malam.</p>
+                    </div>
+                </div>
+                <div class="card pop-card">
+                    <div class="pop-img-wrapper">
+                        <img src="https://image.idntimes.com/post/20230130/mv5bndixndcyngytzti2yy00n2fkltkym2etzgu2nwflndg5yjdkxkeyxkfqcgdeqxvymtezmti1mjk3-v1-db785d7d1e53fa81b01cf3024b354428.jpg" alt="Record of Ragnarok" class="pop-img">
+                    </div>
+                    <div class="pop-content">
+                        <h4>Record of Ragnarok</h4>
+                        <p>Pertarungan turnamen brutal antara para dewa melawan manusia terkuat sepanjang sejarah.</p>
+                    </div>
+                </div>
+                <div class="card pop-card">
+                    <div class="pop-img-wrapper">
+                        <img src="https://asset.tribunnews.com/5n1aOfa9WvqWNRUoiKZoqlzRsD4=/1200x675/filters:upscale():quality(30):format(webp):focal(0.5x0.5:0.5x0.5)/medan/foto/bank/originals/Spy-x-Family-bermula-dari-manga-yang-terbit-di-tahun-2019.jpg" alt="Spy x Family" class="pop-img">
+                    </div>
+                    <div class="pop-content">
+                        <h4>Spy x Family</h4>
+                        <p>Aksi komedi hangat keluarga unik yang terdiri dari mata-mata, pembunuh bayaran, dan telepatis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sub 3: Movies -->
+        <div class="pop-group reveal reveal-slide-up" data-category="movies">
+            <h3 class="sub-section-title"><i class="fas fa-clapperboard"></i> Film Favorit</h3>
+            <div class="cards-grid columns-4">
+                <div class="card pop-card">
+                    <div class="pop-img-wrapper">
+                        <img src="https://a.1stdibscdn.com/1977-star-wars-original-vintage-poster-for-sale-picture-6/f_84052/f_333893321679328668574/staw4_master.jpg?width=768" alt="Star Wars" class="pop-img">
+                    </div>
+                    <div class="pop-content">
+                        <h4>Star Wars</h4>
+                        <p>Saga luar angkasa legendaris tentang pertempuran galaksi, ksatria Jedi, dan kekuatan The Force.</p>
+                    </div>
+                </div>
+                <div class="card pop-card">
+                    <div class="pop-img-wrapper">
+                        <img src="https://images.thedirect.com/media/article_full/avengers-2026-m.jpg" alt="MCU" class="pop-img">
+                    </div>
+                    <div class="pop-content">
+                        <h4>Marvel Cinematic Universe</h4>
+                        <p>Semesta superhero raksasa yang saling terhubung dengan aksi dan cerita yang spektakuler.</p>
+                    </div>
+                </div>
+                <div class="card pop-card">
+                    <div class="pop-img-wrapper">
+                        <img src="https://wallpapercat.com/w/full/b/2/8/42336-1920x1080-desktop-1080p-catch-me-if-you-can-background-image.jpg" alt="Catch Me If You Can" class="pop-img">
+                    </div>
+                    <div class="pop-content">
+                        <h4>Catch Me If You Can</h4>
+                        <p>Petualangan nyata kepiawaian penipu ulung Frank Abagnale Jr. dalam aksi kucing-kucingan dengan FBI.</p>
+                    </div>
+                </div>
+                <div class="card pop-card">
+                    <div class="pop-img-wrapper">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfBIk8nW9F76kPlJnW2z4JB1fD1bxjktlMMjQ7bt1CAOWfdGJnorjjKrE&s=10" alt="Planet of The Apes" class="pop-img">
+                    </div>
+                    <div class="pop-content">
+                        <h4>Planet of The Apes</h4>
+                        <p>Waralaba fiksi ilmiah cerdas tentang kebangkitan spesies kera dalam menguasai peradaban bumi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sub 4: Lagu Favorit -->
+        <div class="pop-group reveal reveal-slide-up" data-category="songs">
+            <h3 class="sub-section-title"><i class="fas fa-music"></i> Lagu Favorit</h3>
+            <div class="cards-grid columns-4">
+
+                <div class="card pop-card music-card">
+                    <audio class="song-audio" src="https://files.catbox.moe/e6v97s.mp3"></audio>
+                    <div class="pop-content">
+                        <div class="card-header-play">
+                            <h4>We Don't Talk Anymore</h4>
+                            <button class="play-btn" onclick="togglePlay(this)">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                        <span class="artist-tag">Charlie Puth ft. Selena Gomez</span>
+                        <p>Lagu pop catchy yang mengekspresikan rasa canggung setelah hubungan berakhir.</p>
+                    </div>
+                </div>
+
+                <div class="card pop-card music-card">
+                    <audio class="song-audio" src="https://files.catbox.moe/6zpxd5.mp3"></audio>
+                    <div class="pop-content">
+                        <div class="card-header-play">
+                            <h4>Pelangi</h4>
+                            <button class="play-btn" onclick="togglePlay(this)">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                        <span class="artist-tag">HiVi!</span>
+                        <p>Alunan musik pop-akustik manis asal Indonesia yang penuh energi keceriaan dan nostalgia.</p>
+                    </div>
+                </div>
+
+                <div class="card pop-card music-card">
+                    <audio class="song-audio" src="https://files.catbox.moe/46qx2t.mp3"></audio>
+                    <div class="pop-content">
+                        <div class="card-header-play">
+                            <h4>Love Me Harder</h4>
+                            <button class="play-btn" onclick="togglePlay(this)">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                        <span class="artist-tag">Ariana Grande ft. The Weeknd</span>
+                        <p>Kolaborasi R&B sensual dengan vokal emosional yang memikat pendengar.</p>
+                    </div>
+                </div>
+
+                <div class="card pop-card music-card">
+                    <audio class="song-audio" src="https://files.catbox.moe/5sdekc.mp3"></audio>
+                    <div class="pop-content">
+                        <div class="card-header-play">
+                            <h4>No. 1 Party Anthem</h4>
+                            <button class="play-btn" onclick="togglePlay(this)">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                        <span class="artist-tag">Arctic Monkeys</span>
+                        <p>Track indie-rock santai dengan atmosfer malam hari yang mendalam dan mellow.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- 8. Gaming Zone Section -->
+<section id="gaming" class="gaming-section">
+    <div class="container">
+        <h2 class="section-title reveal">Gaming <span>Zone</span></h2>
+
+        <!-- 🔘 TOMBOL FILTER GAMING ZONE -->
+        <div class="game-filter-container reveal reveal-slide-up">
+            <button class="game-filter-btn active" data-game-filter="all">Semua Game</button>
+            <button class="game-filter-btn" data-game-filter="mlbb">
+                <img src="https://upload.wikimedia.org/wikipedia/en/a/a0/Mobile_Legends_Bang_Bang_2025_logo.png" alt="MLBB Logo" class="btn-game-logo"> MLBB
+            </button>
+            <button class="game-filter-btn" data-game-filter="mcgg">
+                <img src="https://upload.wikimedia.org/wikipedia/en/a/ac/Magic_Chess.png" alt="MCGG Logo" class="btn-game-logo">Magic Chess
+            </button>
+            <button class="game-filter-btn" data-game-filter="minecraft">
+                <img src="https://i.postimg.cc/hv5qV3NX/265da9bad2d750714f202f1503a14441-removebg-preview-removebg-preview.png" alt="Minecraft" class="btn-game-logo">Minecraft
+            </button>
+        </div>
+
+                <!-- Mobile Legends: Bang Bang -->
+                <div class="game-group reveal reveal-slide-up" data-game="mlbb">
+                    <h3 class="game-title">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/a/a0/Mobile_Legends_Bang_Bang_2025_logo.png" alt="MLBB Logo" class="game-title-logo">
+                        Mobile Legends: Bang Bang
+                    </h3>
+                    <p class="game-sub">3 Hero Favorit (Goldlaner):</p>
+                    <div class="cards-grid columns-3">
+                        
+                        <!-- Hero 1 -->
+                        <div class="card hero-card" 
+                             data-name="Claude" 
+                             data-role="Marksman / Goldlane" 
+                             data-poster="https://files.catbox.moe/fmf8w7.png" 
+                             data-matches="450 Match" 
+                             data-wr="68.5%">
+                            <div class="hero-avatar">
+                                <img src="https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_1_88_1205_1/100_e1097b9d3e1d5e9f14600d32e8b18acd.png" alt="Claude">
+                                <span class="hero-tag-badge">MAIN</span>
+                            </div>
+                            <h4>Claude</h4>
+                            <span class="hero-role-badge goldlane">Marksman / Goldlane</span>
+                        </div>
+
+                        <!-- Hero 2 -->
+                        <div class="card hero-card" 
+                             data-name="Harith" 
+                             data-role="Mage / Goldlane" 
+                             data-poster="https://files.catbox.moe/f15zq9.png" 
+                             data-matches="320 Match" 
+                             data-wr="65.0%">
+                            <div class="hero-avatar">
+                                <img src="https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_1_88_1205_1/100_d228a823b477fdf6c458c829c2e62bcf.png" alt="Harith">
+                            </div>
+                            <h4>Harith</h4>
+                            <span class="hero-role-badge goldlane">Mage / Goldlane</span>
+                        </div>
+
+                        <!-- Hero 3 -->
+                        <div class="card hero-card" 
+                             data-name="Granger" 
+                             data-role="Marksman / Goldlane" 
+                             data-poster="https://files.catbox.moe/8w6pcw.jpeg" 
+                             data-matches="280 Match" 
+                             data-wr="62.4%">
+                            <div class="hero-avatar">
+                                <img src="https://akmweb.youngjoygame.com/web/svnres/img/test/homepage_2_1_88_1205_1/100_a7729262d5b4abdc34ae5181e964c235.png" alt="Granger">
+                            </div>
+                            <h4>Granger</h4>
+                            <span class="hero-role-badge goldlane">Marksman / Goldlane</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Magic Chess: Go Go -->
+                <div class="game-group reveal reveal-slide-up" data-game="mcgg">
+                    <h3 class="game-title">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/a/ac/Magic_Chess.png" alt="MCGG Logo" class="game-title-logo">
+                        Magic Chess: Go Go
+                    </h3>
+                    <p class="game-sub">4 Commander Favorit:</p>
+                    <div class="cards-grid columns-4">
+                        
+                        <div class="card hero-card" 
+                             data-name="Guinevere" 
+                             data-role="Economy" 
+                             data-poster="https://static.wikia.nocookie.net/mobile-legends/images/2/2a/Hero47121-portrait.png/revision/latest?cb=20250322145119" 
+                             data-matches="210 Match" 
+                             data-wr="72.0%">
+                            <div class="hero-avatar">
+                                <img src="https://akmweb.youngjoygame.com/web/gms/image/3086b1bd539e5f115e51e63e612bd589.png" alt="Guinevere">
+                            </div>
+                            <h4>Guinevere</h4>
+                            <span class="hero-role-badge commander">Economy</span>
+                        </div>
+
+                        <div class="card hero-card" 
+                             data-name="Popol & Kupa" 
+                             data-role="Economy" 
+                             data-poster="https://i.postimg.cc/Y9D9j8gR/Buss-Avatar.jpg" 
+                             data-matches="180 Match" 
+                             data-wr="69.5%">
+                            <div class="hero-avatar">
+                                <img src="https://akmweb.youngjoygame.com/web/gms/image/2292dab1521e76515f05772413760608.png" alt="Popol & Kupa">
+                            </div>
+                            <h4>Popol & Kupa</h4>
+                            <span class="hero-role-badge commander">Economy</span>
+                        </div>
+
+                        <div class="card hero-card" 
+                             data-name="Nana" 
+                             data-role="Economy" 
+                             data-poster="https://i.postimg.cc/vH8HThJm/Tharz-Avatar.jpg" 
+                             data-matches="150 Match" 
+                             data-wr="64.8%">
+                            <div class="hero-avatar">
+                                <img src="https://akmweb.youngjoygame.com/web/gms/image/8748f39b488b5449542c965ed6093c16.png" alt="Nana">
+                            </div>
+                            <h4>Nana</h4>
+                            <span class="hero-role-badge commander">Economy</span>
+                        </div>
+
+                        <div class="card hero-card" 
+                             data-name="Chou" 
+                             data-role="Economy" 
+                             data-poster="https://i.postimg.cc/L5n5DkWs/Kaboom-Avatar.jpg" 
+                             data-matches="120 Match" 
+                             data-wr="61.0%">
+                            <div class="hero-avatar">
+                                <img src="https://akmweb.youngjoygame.com/web/gms/image/67e9ff1a8a411ac869eb41366227f7d3.png" alt="Chou">
+                            </div>
+                            <h4>Chou</h4>
+                            <span class="hero-role-badge commander">Economy</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Minecraft -->
+                <div class="game-group reveal reveal-slide-up" data-game="minecraft">
+                    <h3 class="game-title">
+                        <img src="https://i.postimg.cc/hv5qV3NX/265da9bad2d750714f202f1503a14441-removebg-preview-removebg-preview.png" alt="Minecraft Logo" class="game-title-logo">
+                        Minecraft
+                    </h3>
+                    <div class="card minecraft-card">
+                        
+                        <!-- Kotak Frame 3D Skin Canvas -->
+                        <div class="minecraft-3d-wrapper">
+                            <canvas id="minecraft-skin-canvas"></canvas>
+                            <p class="skin-hint"><i class="fas fa-hand-pointer"></i> Drag/Putar 3D</p>
+                        </div>
+
+                        <div class="minecraft-info">
+                            <h4>Sandbox & World Building</h4>
+                            <span class="hero-role-badge minecraft">Survival & Creative World</span>
+                            <p>Tempat terbaik buat meluapkan imajinasi tanpa batas, mulai dari bikin bangunan keren sampai eksplorasi survival bareng teman-teman.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+<!-- 9. Footer & Social Media -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-logo">
+                <h3>Pang<span>PingPong</span></h3>
+                <p>Mahasiswa ITH & Tech Enthusiast</p>
+            </div>
+<div class="social-links">
+    <!-- 1. Instagram -->
+    <a href="https://www.instagram.com/irpanggghooh?igsh=MXd5dGs2bXF5NnZoMw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon">
+        <i class="fab fa-instagram"></i>
+    </a>
+    
+    <!-- 2. WhatsApp (Ganti dengan nomor HP berawalan 62) -->
+    <a href="https://wa.me/62895806538749" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-icon">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- 3. TikTok -->
+    <a href="https://www.tiktok.com/@pangpingpong67?_r=1&_t=ZS-98n6BEojtA8" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-icon">
+        <i class="fab fa-tiktok"></i>
+    </a>
+    
+    <!-- 4. Discord -->
+    <a href="https://discord.com/users/pang_ping_pong" target="_blank" rel="noopener noreferrer" aria-label="Discord" class="social-icon">
+        <i class="fab fa-discord"></i>
+    </a>
+</div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> PangPingPong. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+<!-- Lightbox Modal (Zoom Foto Galeri) -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="Zoom Foto Galeri">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<!-- Library 3D Minecraft Skin Viewer -->
+<script src="https://cdn.jsdelivr.net/npm/skinview3d@3.0.1/bundles/skinview3d.bundle.js"></script>
+
+<!-- Lightbox Pop-Up Khusus Desain Grafis (4:5 Ratio) -->
+<div id="desain-lightbox" class="desain-lightbox">
+    <span class="desain-lightbox-close">&times;</span>
+    <div class="desain-lightbox-body">
+        <img id="desain-lightbox-img" src="" alt="Full Artwork">
+        <p id="desain-lightbox-caption"></p>
+    </div>
+</div>
+
+    <!-- Custom JavaScript Kamu -->
+    <script src="script.js"></script>
+</body>
+</html>
